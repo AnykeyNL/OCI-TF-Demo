@@ -132,8 +132,8 @@ resource oci_core_instance export_Webserver {
   compartment_id      = var.compartment_ocid
   create_vnic_details {
     assign_public_ip = "true"
-    display_name = "Webserver"
-    hostname_label = "webserver"
+    display_name = var.web_host_name
+    hostname_label = var.web_host_name
     skip_source_dest_check = "false"
     subnet_id              = oci_core_subnet.export_TerraSubnet.id
   }
@@ -146,7 +146,6 @@ resource oci_core_instance export_Webserver {
     boot_volume_type                    = "PARAVIRTUALIZED"
     firmware                            = "UEFI_64"
     is_consistent_volume_naming_enabled = "true"
-    is_pv_encryption_in_transit_enabled = "false"
     network_type                        = "VFIO"
     remote_data_volume_type             = "PARAVIRTUALIZED"
   }
@@ -164,10 +163,4 @@ resource oci_core_instance export_Webserver {
   }
 }
 
-resource oci_core_private_ip export_Webserver_1 {
-  display_name = "Webserver"
-  freeform_tags = {
-  }
-  hostname_label = "webserver"
-  vnic_id = "ocid1.vnic.oc1.eu-frankfurt-1.abtheljtgyxfvl3w6fw3pucczvnpq2jufqk2kj3i2or2kncc442bknzugyqq"
-}
+
