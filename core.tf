@@ -159,7 +159,7 @@ resource oci_core_instance export_Webserver {
     ocpus         = "1"
   }
   source_details {
-    source_id   = ocid1.image.oc1.eu-frankfurt-1.aaaaaaaadufxapj27ujdt7qqye7qxiozk7uucutigc7lh6nwljd3nw43qosq"
+    source_id   = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaadufxapj27ujdt7qqye7qxiozk7uucutigc7lh6nwljd3nw43qosq"
     source_type = "image"
   }
 }
