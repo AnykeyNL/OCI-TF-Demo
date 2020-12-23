@@ -1,3 +1,3 @@
 variable compartment_ocid { }
 variable region { }
-variable vcn_name {}
+variable vcn_name { }
