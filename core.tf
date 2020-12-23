@@ -124,3 +124,50 @@ resource oci_core_default_security_list export_Default-Security-List-for-TerraVC
   }
   manage_default_resource_id = oci_core_vcn.export_TerraVCN.default_security_list_id
 }
+
+
+
+resource oci_core_instance export_Webserver {
+  availability_domain = "LYXg:EU-FRANKFURT-1-AD-1"
+  compartment_id      = var.compartment_ocid
+  create_vnic_details {
+    assign_public_ip = "true"
+    display_name = "Webserver"
+    hostname_label = "webserver"
+    skip_source_dest_check = "false"
+    subnet_id              = oci_core_subnet.export_TerraSubnet.id
+  }
+  display_name = "Webserver"
+  fault_domain = "FAULT-DOMAIN-1"
+  instance_options {
+    are_legacy_imds_endpoints_disabled = "false"
+  }
+  launch_options {
+    boot_volume_type                    = "PARAVIRTUALIZED"
+    firmware                            = "UEFI_64"
+    is_consistent_volume_naming_enabled = "true"
+    is_pv_encryption_in_transit_enabled = "false"
+    network_type                        = "VFIO"
+    remote_data_volume_type             = "PARAVIRTUALIZED"
+  }
+  metadata = {
+    "ssh_authorized_keys" = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCg93rI0IydrdqDyPu4b/BoKraAPogEHSMGaeu2D6XmHkFJL69MnDXa1ihLsFIg9R3yFeTYLSP3D4VWD088BW7tjDbqnRE5k2TkoTnEp7KvG1lyTOg+/CovNO6BGbV2JBq0tlFSjSN/CsDllljdpGmZVImpMxCCL/6R8NE7EXFZpZB/mIlZJib5c55THrv/aK9l6qJOvU6000C9p6jitj2E16laznDd1TBR+3lD6wiJlLj7hRFqM5F6e7oLeuwANwfDFwyXNuCfXTnr2VSVs7uiNItylxwmdWZn0eltXpBiwttTcmZ5Im2G6oyZRvj4AnkPacAQM8i74l3/OxNLIgYL phpseclib-generated-key"
+  }
+  shape = "VM.Standard.E3.Flex"
+  shape_config {
+    memory_in_gbs = "16"
+    ocpus         = "1"
+  }
+  source_details {
+    source_id   = ocid1.image.oc1.eu-frankfurt-1.aaaaaaaadufxapj27ujdt7qqye7qxiozk7uucutigc7lh6nwljd3nw43qosq"
+    source_type = "image"
+  }
+}
+
+resource oci_core_private_ip export_Webserver_1 {
+  display_name = "Webserver"
+  freeform_tags = {
+  }
+  hostname_label = "webserver"
+  vnic_id = "ocid1.vnic.oc1.eu-frankfurt-1.abtheljtgyxfvl3w6fw3pucczvnpq2jufqk2kj3i2or2kncc442bknzugyqq"
+}
