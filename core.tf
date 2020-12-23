@@ -27,9 +27,6 @@ resource oci_core_subnet export_TerraSubnet {
 }
 resource oci_core_vcn export_TerraVCN {
   cidr_block = "192.168.100.0/24"
-  cidr_blocks = [
-    "192.168.100.0/24",
-  ]
   compartment_id = var.compartment_ocid
   display_name = "TerraVCN"
   dns_label    = "terravcn"
