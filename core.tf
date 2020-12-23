@@ -26,7 +26,7 @@ resource oci_core_subnet export_TerraSubnet {
   vcn_id = oci_core_vcn.export_TerraVCN.id
 }
 resource oci_core_vcn export_TerraVCN {
-  cidr_block = "192.168.100.0/24"
+  cidr_block = "192.168.101.0/24"
   compartment_id = var.compartment_ocid
   display_name = "TerraVCN"
   dns_label    = "terravcn"
@@ -116,7 +116,7 @@ resource oci_core_default_security_list export_Default-Security-List-for-TerraVC
       type = "3"
     }
     protocol    = "1"
-    source      = "192.168.100.0/24"
+    source      = "192.168.101.0/24"
     source_type = "CIDR_BLOCK"
     stateless   = "false"
     #tcp_options = <<Optional value not found in discovery>>
