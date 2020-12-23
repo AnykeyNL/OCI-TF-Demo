@@ -10,7 +10,7 @@ resource oci_core_internet_gateway export_TerraInternetGW {
 }
 resource oci_core_subnet export_TerraSubnet {
   #availability_domain = <<Optional value not found in discovery>>
-  cidr_block     = "192.168.100.0/24"
+  cidr_block     = "192.168.101.0/24"
   compartment_id = var.compartment_ocid
   dhcp_options_id = oci_core_vcn.export_TerraVCN.default_dhcp_options_id
   display_name    = "TerraSubnet"
