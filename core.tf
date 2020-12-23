@@ -28,8 +28,8 @@ resource oci_core_subnet export_TerraSubnet {
 resource oci_core_vcn export_TerraVCN {
   cidr_block = "192.168.101.0/24"
   compartment_id = var.compartment_ocid
-  display_name = "TerraVCN"
-  dns_label    = "terravcn"
+  display_name = var.vcn_name
+  dns_label    = var.vcn_name
   freeform_tags = {
   }
   #ipv6cidr_block = <<Optional value not found in discovery>>
