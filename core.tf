@@ -152,7 +152,7 @@ resource oci_core_instance export_Webserver {
   }
   shape = "VM.Standard.E3.Flex"
   shape_config {
-    memory_in_gbs = "16"
+    memory_in_gbs = var.memory
     ocpus         = "1"
   }
   source_details {
